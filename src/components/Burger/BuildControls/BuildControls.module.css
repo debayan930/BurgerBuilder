@@ -1,0 +1,55 @@
+.BuildControls{
+    width: 100%;
+    background-color: #cf8f2e;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    box-shadow: 0 2px 1px #ccc;
+    margin: auto;
+    padding: 10px 0;
+}
+
+@media (min-width: 1000px) and (min-height: 700px){
+    .BuildControls{
+        width: 700px;
+    }
+}
+
+@media (min-width: 500px) and (min-height: 401px){
+    .BuildControls{
+        width: 450px;
+    }
+}
+
+@media (min-width: 500px) and (max-height: 400px){
+    .BuildControls{
+        width: 350px;
+    }
+}
+
+.BuildControls .OrderButton{
+    margin-top: 10px;
+    padding: 10px;
+    font-weight: bold;
+    background: rgb(39, 170, 207);
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    border: 3px solid rgb(39, 170, 207);
+    cursor: pointer;
+    transition-duration: 0.5s;
+    position: relative;
+}
+
+.BuildControls .OrderButton:hover{
+    background-color: white;
+    color: black;
+}
+
+.BuildControls .OrderButton:disabled{
+    cursor: not-allowed;
+}
+
+.BuildControls .OrderButton:active{
+    top: 5px;
+}
