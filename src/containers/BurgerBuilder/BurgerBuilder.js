@@ -24,7 +24,8 @@ class BurgerBuilder extends Component{
             mutton: 0,
         },
         totalPrice: BASE_PRICE,
-        buyable: false
+        buyable: false,
+        buyMode: false
     }
 
     addIngredientHandler = (type) => {
@@ -67,6 +68,15 @@ class BurgerBuilder extends Component{
     buyHandler = () => {
         this.setState({ buyMode: true });
     }
+
+    modalCloseHandler = () => {
+        this.setState({ buyMode: false });
+    }
+
+    purchaseContinueHandler = () => {
+        this.setState({ buyMode: false });
+        alert('Purchased!');
+    }
     
     render(){
         const disabledInfo = {...this.state.ingredients};
@@ -76,8 +86,13 @@ class BurgerBuilder extends Component{
 
         return(
             <Aux>
-                <Modal ordered={this.state.buyMode}>
-                    <OrderSummary ingredients={this.state.ingredients} />
+                <Modal buyMode={this.state.buyMode} modalClosed={this.modalCloseHandler} >
+                    <OrderSummary
+                        ingredients={this.state.ingredients}
+                        modalClosed={this.modalCloseHandler}
+                        purchaseContinue={this.purchaseContinueHandler}
+                        price={this.state.totalPrice}
+                    />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
                 <AuthContext.Provider
